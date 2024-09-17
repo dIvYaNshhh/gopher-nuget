@@ -17,8 +17,7 @@ jobs:
     - name: Pack NuGet package
       run: |
         $baseVersion = "0.0.2"
-        $buildNumber = $env:GITHUB_RUN_NUMBER
-        $fullVersion = "$baseVersion-$buildNumber"
+        $fullVersion = "$baseVersion-18"
         (Get-Content gopher-nuget.nuspec) `
           -replace '0.0.2-18', $fullVersion `
           -replace 'GopherSecurity-windows-0.0.2-18-amd64-release.msi', "GopherSecurity-windows-$fullVersion-amd64-release.msi" |
