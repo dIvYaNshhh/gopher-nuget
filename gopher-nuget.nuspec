@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>gopher.security.app</id>
+    <version>0.0.2-18</version>
+    <title>Gopher Security</title>
+    <authors>Divyansh Ingle</authors>
+    <description>Zero-trust Authorization as a Service</description>
+    <tags>msi installer</tags>
+  </metadata>
+  <files>
+    <file src="src\GopherSecurity-windows-0.0.2-18-amd64-release.msi" target="tools" />
+  </files>
+</package>
