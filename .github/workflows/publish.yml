@@ -32,3 +32,24 @@ jobs:
     
     - name: Push to GitHub Packages
       run: dotnet nuget push *.nupkg --source "github" --api-key ${{ secrets.NUGET_GITHUB_TOKEN }}
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.NUGET_GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ env.fullVersion }}
+        release_name: Release ${{ env.fullVersion }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.NUGET_GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./gopher.security.app.${{ env.fullVersion }}.nupkg
+        asset_name: gopher.security.app.${{ env.fullVersion }}.nupkg
+        asset_content_type: application/zip
